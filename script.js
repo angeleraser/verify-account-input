@@ -7,27 +7,25 @@ class VerifyCodeComponent {
     placeholder = "",
     onChange,
   }) {
-    this.title = title;
-    this.message = message;
     this.length = length >= 3 ? length : 3;
     this.placeholder = placeholder;
-    this.$root = this.createRoot();
+    this.$root = this.createRoot({ messageValue: message, titleValue: title });
     this.writeInputValue(value);
     this.__value = value.split("");
     this.onChange = onChange;
   }
 
-  createRoot() {
+  createRoot({ titleValue, messageValue }) {
     const root = document.createElement("div");
     root.classList.add("code-form-container");
 
     const title = document.createElement("h2");
     title.classList.add("code-form-title");
-    title.textContent = this.title;
+    title.textContent = titleValue;
 
     const message = document.createElement("p");
     message.classList.add("code-form-message");
-    message.textContent = this.message;
+    message.textContent = messageValue;
 
     const form = document.createElement("form");
     form.classList.add("code-form");
@@ -40,6 +38,7 @@ class VerifyCodeComponent {
       input.setAttribute("min", "0");
       input.setAttribute("max", "9");
       input.setAttribute("required", "");
+      input.setAttribute("pattern", "\\d*");
       input.setAttribute("placeholder", this.placeholder);
       input.setAttribute("data-index", index);
 
@@ -65,7 +64,7 @@ class VerifyCodeComponent {
 
     if (key.includes("ArrowLeft") || key.includes("ArrowRight")) {
       this.focusInput(key === "ArrowLeft" ? index - 1 : index + 1);
-    }
+    } 
 
     if (key === "Backspace") {
       this.__value[index] = "";
@@ -76,7 +75,7 @@ class VerifyCodeComponent {
       this.getInput(index).value = target.value.slice(0, 0);
       this.__value[index] = key;
       this.focusInput(index + 1);
-    }
+    } 
 
     const codeValue = this.__value.join("");
     if (codeValue.length) this.onChange?.(codeValue);
