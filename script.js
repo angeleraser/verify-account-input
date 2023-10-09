@@ -72,7 +72,7 @@ class VerifyCodeComponent {
     }
 
     if (/\d/.test(key)) {
-      this.getInput(index).value = target.value.slice(0, 0);
+      setTimeout(() => this.getInput(index).value = target.value.slice(0, 0), 0);
       this.__value[index] = key;
       this.focusInput(index + 1);
     } 
