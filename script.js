@@ -67,6 +67,7 @@ class VerifyCodeComponent {
     }
 
     if (key === "Backspace") {
+      this.getInput(index).value = "";
       this.__value[index] = "";
       this.focusInput(index - 1);
     }
