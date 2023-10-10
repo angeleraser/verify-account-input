@@ -64,7 +64,7 @@ class VerifyCodeComponent {
 
     if (key.includes("ArrowLeft") || key.includes("ArrowRight")) {
       this.focusInput(key === "ArrowLeft" ? index - 1 : index + 1);
-    } 
+    }
 
     if (key === "Backspace") {
       this.__value[index] = "";
@@ -72,11 +72,10 @@ class VerifyCodeComponent {
     }
 
     if (/\d/.test(key)) {
-      alert(key)
-      this.getInput(index).value = '';
+      this.getInput(index).value = "";
       this.__value[index] = key;
-      // this.focusInput(index + 1);
-    } 
+      this.focusInput(index + 1);
+    }
 
     const codeValue = this.__value.join("");
     if (codeValue.length) this.onChange?.(codeValue);
@@ -89,7 +88,7 @@ class VerifyCodeComponent {
   }
 
   focusInput(index) {
-    setTimeout(() => this.getInput(index)?.focus(), 0);
+    setTimeout(() => this.getInput(index)?.focus(), 50);
   }
 
   getInput(index) {
