@@ -88,7 +88,7 @@ class VerifyCodeComponent {
   }
 
   focusInput(index) {
-    setTimeout(() => this.getInput(index)?.focus(), 50);
+    setTimeout(() => this.getInput(index)?.focus(), 10);
   }
 
   getInput(index) {
