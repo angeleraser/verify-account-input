@@ -72,6 +72,7 @@ class VerifyCodeComponent {
     }
 
     if (/\d/.test(key)) {
+      alert(key)
       this.getInput(index).value = '';
       this.__value[index] = key;
       this.focusInput(index + 1);
