@@ -75,7 +75,7 @@ class VerifyCodeComponent {
       alert(key)
       this.getInput(index).value = '';
       this.__value[index] = key;
-      this.focusInput(index + 1);
+      // this.focusInput(index + 1);
     } 
 
     const codeValue = this.__value.join("");
